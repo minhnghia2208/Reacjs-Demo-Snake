@@ -1,17 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Button from '@material-ui/core/Button';
+import { StylesProvider } from "@material-ui/core/styles";
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+class Square extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = { value: this.props.value};
+  }
+  handleClick() {
+    this.setState({value: !this.state.value});
+  }
+  render(){
+    return (
+      <StylesProvider injectFirst>
+        <Button 
+          onClick={() => this.handleClick()}
+          className= {this.state.value? "button_before": "button_after"}>
+          {this.props.value}
+        </Button>
+      </StylesProvider>
+    )}
+}
+class Board extends React.Component{
+  renderBoard(){
+    
+  }
+  render(){
+    var rows = new Array(9);
+    for (let i = 0; i < rows.length; i++){    
+      rows[i] = i===0 ? <div><Square value = {false}/>{new Array(8).fill(<Square value = {true}/>)}</div>:
+      <div>{new Array(9).fill(<Square value = {true}/>)}</div>;
+    }
+    return (
+      <div>
+        <h1 className='name'>EDVENTUR UFF DA SNAKEE</h1>
+        <div className='center'>{rows}</div>
+      </div>
+    )
+  }
+
+}
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <html><Board/></html>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
