@@ -24,8 +24,17 @@ class Square extends React.Component{
     )}
 }
 class Board extends React.Component{
-  renderBoard(){
-    
+  constructor(props){
+    super(props);
+    this.state = {
+      squares: new Array(9).fill(new Array(9).fill(true)),
+      clicked: false,
+    };
+  }
+  renderSquare(i, j){
+    return (i===0 && j ==0) ? <div><Square value = {false}/></div>:
+    <div>{new Array(9).fill(<Square value = {true}/>)}</div>;
+
   }
   render(){
     var rows = new Array(9);
@@ -46,3 +55,18 @@ ReactDOM.render(
   <html><Board/></html>,
   document.getElementById('root')
 );
+
+// Square Render
+// render(){
+//   var rows = new Array(9);
+//   for (let i = 0; i < rows.length; i++){    
+//     rows[i] = i===0 ? <div><Square value = {false}/>{new Array(8).fill(<Square value = {true}/>)}</div>:
+//     <div>{new Array(9).fill(<Square value = {true}/>)}</div>;
+//   }
+//   return (
+//     <div>
+//       <h1 className='name'>EDVENTUR UFF DA SNAKEE</h1>
+//       <div className='center'>{rows}</div>
+//     </div>
+//   )
+// }
