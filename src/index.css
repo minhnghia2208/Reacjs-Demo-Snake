@@ -37,6 +37,17 @@
 .button_after:hover {
   background-color: #5469d4;
 }
+.button_icon{
+  background-color: #39b157;
+  border-radius: 0px;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 13px;
+}
+.button_icon:hover {
+  background-color: #5469d4;
+}
+
 html { 
   background: url("background-img.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -53,12 +64,6 @@ body {
 ol, ul {
   padding-left: 30px;
 }
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
 .status {
   margin-bottom: 10px;
 }
